@@ -2,13 +2,13 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_scaleway"></a> [scaleway](#requirement\_scaleway) | 2.10.0 |
+| <a name="requirement_scaleway"></a> [scaleway](#requirement\_scaleway) | 2.24.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_scaleway"></a> [scaleway](#provider\_scaleway) | 2.10.0 |
+| <a name="provider_scaleway"></a> [scaleway](#provider\_scaleway) | 2.24.0 |
 
 ## Modules
 
