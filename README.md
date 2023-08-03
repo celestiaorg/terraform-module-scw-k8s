@@ -18,8 +18,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [scaleway_k8s_cluster.k8s-cluster](https://registry.terraform.io/providers/scaleway/scaleway/2.10.0/docs/resources/k8s_cluster) | resource |
-| [scaleway_k8s_pool.k8s-cluster-pool](https://registry.terraform.io/providers/scaleway/scaleway/2.10.0/docs/resources/k8s_pool) | resource |
+| [scaleway_k8s_cluster.k8s-cluster](https://registry.terraform.io/providers/scaleway/scaleway/2.24.0/docs/resources/k8s_cluster) | resource |
+| [scaleway_k8s_pool.k8s-cluster-pool](https://registry.terraform.io/providers/scaleway/scaleway/2.24.0/docs/resources/k8s_pool) | resource |
 
 ## Inputs
 
@@ -35,7 +35,7 @@ No modules.
 | <a name="input_expendable_pods_priority_cutoff"></a> [expendable\_pods\_priority\_cutoff](#input\_expendable\_pods\_priority\_cutoff) | Pods with priority below cutoff will be expendable. | `string` | `"-5"` | no |
 | <a name="input_ignore_daemonsets_utilization"></a> [ignore\_daemonsets\_utilization](#input\_ignore\_daemonsets\_utilization) | Ignore DaemonSet pods when calculating resource utilization for scaling down. | `bool` | `true` | no |
 | <a name="input_k8s_cni"></a> [k8s\_cni](#input\_k8s\_cni) | CNI | `string` | `"cilium"` | no |
-| <a name="input_k8s_pools"></a> [k8s\_pools](#input\_k8s\_pools) | ============================================== Kubernetes Pool Config ============================================== | <pre>list(object({<br>    k8s_pool_name        = string, // Pool name<br>    k8s_pool_type        = string, // Type of the node<br>    k8s_pool_size        = number, // This field will only be used at creation if autoscaling is enabled.<br>    container_runtime    = string, // Container runtime<br>    k8s_pool_autoscaling = bool,   // Enables autoscaling<br>    k8s_pool_autohealing = bool,   // Enables autohealing<br>    k8s_pool_min_size    = number, // Min number of nodes<br>    k8s_pool_max_size    = number  // Max number of nodes<br>  }))</pre> | n/a | yes |
+| <a name="input_k8s_pools"></a> [k8s\_pools](#input\_k8s\_pools) | ============================================== Kubernetes Pool Config ============================================== | <pre>list(object({<br>    k8s_pool_name        = string, # Pool name<br>    k8s_pool_type        = string, # Type of the node<br>    k8s_pool_size        = number, # This field will only be used at creation if autoscaling is enabled.<br>    container_runtime    = string, # Container runtime<br>    k8s_pool_autoscaling = bool,   # Enables autoscaling<br>    k8s_pool_autohealing = bool,   # Enables autohealing<br>    k8s_pool_min_size    = number, # Min number of nodes<br>    k8s_pool_max_size    = number  # Max number of nodes<br>    upgrade_policy    = list(object({<br>        max_surge       = number # The maximum number of nodes to be created during the upgrade<br>        max_unavailable = number # The maximum number of nodes that can be not ready at the same time<br>    }))<br>  }))</pre> | n/a | yes |
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | K8S Version | `string` | `"1.26.0"` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | Project ID, you can find them here: https://console.scaleway.com/project/settings | `string` | `"YOU-NEED-TO-SPECIFY-IT"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Cluster's region: fr-par, nl-ams, pl-waw | `string` | `"nl-ams"` | no |
