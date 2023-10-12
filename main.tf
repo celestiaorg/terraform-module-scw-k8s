@@ -32,6 +32,7 @@ resource "scaleway_k8s_pool" "k8s-cluster-pool" {
   cluster_id = scaleway_k8s_cluster.k8s-cluster.id
 
   for_each          = { for pool in var.k8s_pools : pool.k8s_pool_name => pool }
+  zone              = each.value.zone != null ? each.value.zone : null
   name              = each.value.k8s_pool_name
   node_type         = each.value.k8s_pool_type
   container_runtime = each.value.container_runtime
