@@ -7,6 +7,7 @@ resource "scaleway_k8s_cluster" "k8s-cluster" {
   project_id = var.project_id
 
   name                        = var.cluster_name
+  type                        = var.cluster_type
   description                 = var.cluster_description
   version                     = var.k8s_version
   cni                         = var.k8s_cni
