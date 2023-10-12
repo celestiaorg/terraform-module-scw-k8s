@@ -25,6 +25,11 @@ variable "cluster_name" {
   description = "The name for the Kubernetes cluster."
   default     = "k8s-cluster-name"
 }
+variable "cluster_type" {
+  type        = string
+  description = "The type of the Kubernetes cluster. (https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/k8s_cluster#type)"
+  default     = "kapsule"
+}
 variable "cluster_description" {
   type        = string
   description = "A description for the Kubernetes cluster."
