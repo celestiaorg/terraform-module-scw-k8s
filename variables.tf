@@ -100,6 +100,7 @@ variable "expendable_pods_priority_cutoff" {
 # ==============================================
 variable "k8s_pools" {
   type = list(object({
+    zone                 = string, # Zone
     k8s_pool_name        = string, # Pool name
     k8s_pool_type        = string, # Type of the node
     k8s_pool_size        = number, # This field will only be used at creation if autoscaling is enabled.
