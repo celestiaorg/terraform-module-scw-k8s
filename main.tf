@@ -23,8 +23,7 @@ resource "scaleway_k8s_cluster" "k8s-cluster" {
   cni                         = var.k8s_cni
   tags                        = var.tags
   delete_additional_resources = var.delete_additional_resources
-
-  private_network_id          = var.private_network ? scaleway_vpc_private_network.private-network.id : null
+  private_network_id          = var.private_network ? scaleway_vpc_private_network.private-network[0].id : null
 
   autoscaler_config {
     disable_scale_down              = var.disable_scale_down
