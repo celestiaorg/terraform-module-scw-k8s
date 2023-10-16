@@ -50,6 +50,12 @@ variable "tags" {
   description = "Tag list"
   default     = ["dev"]
 }
+variable "private_network" {
+  type        = bool
+  description = "If true, a private network will be created and the cluster will be attached to it."
+  default     = false
+}
+
 variable "delete_additional_resources" {
   type        = bool
   description = "Delete additional resources like block volumes, IPs and loadbalancers that were created in Kubernetes on cluster deletion"
