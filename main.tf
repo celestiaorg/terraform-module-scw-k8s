@@ -1,4 +1,14 @@
 # ==============================================
+# ScaleWay Private Network
+# ==============================================
+# https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/data-sources/vpc_private_network
+resource "scaleway_vpc_private_network" "private-network" {
+    count = var.private_network ? 1 : 0
+    name  = var.cluster_name
+    tags  = var.tags
+}
+
+# ==============================================
 # ScaleWay K8S Cluster
 # ==============================================
 # https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/k8s_cluster
@@ -13,6 +23,7 @@ resource "scaleway_k8s_cluster" "k8s-cluster" {
   cni                         = var.k8s_cni
   tags                        = var.tags
   delete_additional_resources = var.delete_additional_resources
+  private_network_id          = var.private_network ? scaleway_vpc_private_network.private-network[0].id : null
 
   autoscaler_config {
     disable_scale_down              = var.disable_scale_down
