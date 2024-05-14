@@ -106,15 +106,17 @@ variable "expendable_pods_priority_cutoff" {
 # ==============================================
 variable "k8s_pools" {
   type = list(object({
-    zone                 = optional(string), # Zone
-    k8s_pool_name        = string, # Pool name
-    k8s_pool_type        = string, # Type of the node
-    k8s_pool_size        = number, # This field will only be used at creation if autoscaling is enabled.
-    container_runtime    = string, # Container runtime
-    k8s_pool_autoscaling = bool,   # Enables autoscaling
-    k8s_pool_autohealing = bool,   # Enables autohealing
-    k8s_pool_min_size    = number, # Min number of nodes
-    k8s_pool_max_size    = number  # Max number of nodes
+    zone                   = optional(string), # Zone
+    k8s_pool_name          = string, # Pool name
+    k8s_pool_type          = string, # Type of the node
+    k8s_pool_size          = number, # This field will only be used at creation if autoscaling is enabled.
+    container_runtime      = string, # Container runtime
+    k8s_pool_autoscaling   = bool,   # Enables autoscaling
+    k8s_pool_autohealing   = bool,   # Enables autohealing
+    k8s_pool_min_size      = number, # Min number of nodes
+    k8s_pool_max_size      = number, # Max number of nodes
+    root_volume_type       = optional(string), # Root volume type
+    root_volume_size_in_gb = optional(number), # Root volume size in GB
     upgrade_policy    = list(object({
         max_surge       = number # The maximum number of nodes to be created during the upgrade
         max_unavailable = number # The maximum number of nodes that can be not ready at the same time
