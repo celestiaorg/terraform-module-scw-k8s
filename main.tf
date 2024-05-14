@@ -43,16 +43,18 @@ resource "scaleway_k8s_cluster" "k8s-cluster" {
 resource "scaleway_k8s_pool" "k8s-cluster-pool" {
   cluster_id = scaleway_k8s_cluster.k8s-cluster.id
 
-  for_each          = { for pool in var.k8s_pools : pool.k8s_pool_name => pool }
-  zone              = each.value.zone != null ? each.value.zone : null
-  name              = each.value.k8s_pool_name
-  node_type         = each.value.k8s_pool_type
-  container_runtime = each.value.container_runtime
-  size              = each.value.k8s_pool_size
-  autoscaling       = each.value.k8s_pool_autoscaling
-  autohealing       = each.value.k8s_pool_autohealing
-  min_size          = each.value.k8s_pool_min_size
-  max_size          = each.value.k8s_pool_max_size
+  for_each               = { for pool in var.k8s_pools : pool.k8s_pool_name => pool }
+  zone                   = each.value.zone != null ? each.value.zone : null
+  name                   = each.value.k8s_pool_name
+  node_type              = each.value.k8s_pool_type
+  container_runtime      = each.value.container_runtime
+  size                   = each.value.k8s_pool_size
+  autoscaling            = each.value.k8s_pool_autoscaling
+  autohealing            = each.value.k8s_pool_autohealing
+  min_size               = each.value.k8s_pool_min_size
+  max_size               = each.value.k8s_pool_max_size
+  root_volume_type       = each.value.root_volume_type
+  root_volume_size_in_gb = each.value.root_volume_size_in_gb
   upgrade_policy {
     max_surge = each.value.upgrade_policy[0].max_surge
     max_unavailable =  each.value.upgrade_policy[0].max_unavailable
