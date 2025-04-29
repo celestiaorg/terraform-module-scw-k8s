@@ -22,6 +22,7 @@ resource "scaleway_k8s_cluster" "k8s-cluster" {
   version                     = var.k8s_version
   cni                         = var.k8s_cni
   tags                        = var.tags
+  labels                      = var.cluster_labels
   delete_additional_resources = var.delete_additional_resources
   private_network_id          = var.private_network ? scaleway_vpc_private_network.private-network[0].id : null
 
@@ -55,6 +56,7 @@ resource "scaleway_k8s_pool" "k8s-cluster-pool" {
   max_size               = each.value.k8s_pool_max_size
   root_volume_type       = each.value.root_volume_type
   root_volume_size_in_gb = each.value.root_volume_size_in_gb
+  labels                 = var.pool_labels
   upgrade_policy {
     max_surge = each.value.upgrade_policy[0].max_surge
     max_unavailable =  each.value.upgrade_policy[0].max_unavailable

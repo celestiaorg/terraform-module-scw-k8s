@@ -1,2 +1,21 @@
-.terraform
+# Terraform working directory
+.terraform/
+
+# Terraform lock file
 .terraform.lock.hcl
+
+# Local TFVars files (often contain secrets, never commit!)
+*.tfvars
+*.tfvars.json
+
+# Terraform plan files
+*.tfplan
+
+# Crash log files
+crash.log
+
+# Ignore override files (local changes)
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json

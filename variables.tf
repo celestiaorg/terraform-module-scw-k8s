@@ -123,3 +123,19 @@ variable "k8s_pools" {
     }))
   }))
 }
+
+# ==============================================
+# Labels for Cluster and Node Pools
+# ==============================================
+
+variable "cluster_labels" {
+  type        = map(string)
+  default     = {}
+  description = "Custom labels for the Kubernetes cluster"
+}
+
+variable "pool_labels" {
+  type        = map(string)
+  default     = {}
+  description = "Custom labels for each Kubernetes node pool"
+}
